@@ -14,28 +14,17 @@ export class UsersService {
 
   obtainUser() {
 
-    var myHeaders = new Headers();
-myHeaders.append("accept", "*/*");
 
-const headers = new HttpHeaders({
-  'accept': '*/*'
-})
 
   let params = new HttpParams().append('page', '1');
   params = params.append('name', 'Luke Skywalker');
 
-return this.http.get('https://swapi.dev/api/people', {
+return this.http.get('https://swapi.dev2323/api/people', {
   params,
-  headers
 }).pipe(
-  map((resp:any)=>  resp['results']), catchError( this.manageErrors )
+  map((resp:any)=>  resp['results']),
 );
   }
 
-  manageErrors(error:HttpErrorResponse) {
-    console.log('An Error occurred');
-    console.log('Registered in the log file');
-    console.warn(error);
-    return throwError('Personalized error')
-  }
+
 }
